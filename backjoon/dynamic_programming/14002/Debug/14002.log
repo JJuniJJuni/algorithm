@@ -1,0 +1,6 @@
+﻿  LIS_4.cpp
+d:\jjunijjuni\backjoon\c++_codes\dynamic_programming\14002\lis_4.cpp(18): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 'scanf' 선언을 참조하십시오.
+d:\jjunijjuni\backjoon\c++_codes\dynamic_programming\14002\lis_4.cpp(20): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: 'scanf' 선언을 참조하십시오.
+  14002.vcxproj -> D:\JJuniJJuni\backjoon\c++_codes\dynamic_programming\14002\Debug\14002.exe
