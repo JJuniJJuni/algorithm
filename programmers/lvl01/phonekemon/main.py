@@ -7,9 +7,7 @@
 '''
 def solution(nums):
     size = len(nums)
-    phonekemon_types = set()
-    for num in nums:
-        phonekemon_types.add(num)
+    phonekemon_types = set(nums)
     answer = min(size, len(phonekemon_types))
     if answer > size / 2:
         answer = int(size / 2)
