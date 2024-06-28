@@ -3,13 +3,6 @@
 '''
 from collections import Counter
 
-
 def solution(participant, completion):
-    participants = Counter(participant)
-    completions = Counter(completion)
-    for key in completions:
-        if key in participants:
-            participants[key] = participants[key] - completions[key]
-    for key in participants:
-        if participants[key] > 0:
-            return key
+    answer = Counter(participant) - Counter(completion)
+    return list(answer.keys())[0]
