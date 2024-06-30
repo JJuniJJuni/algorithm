@@ -16,10 +16,6 @@ def solution(n, lost, reserve):
         students[r] += 1
 
     # 도난당한 학생이 여분의 체육복을 가지고 있는 경우 처리
-    for i in range(1, n + 1):
-        if students[i] == 0 and students[i] == 2:
-            students[i] = 1
-
     # 체육복 대여 처리
     for i in range(1, n + 1):
         if students[i] == 0:
