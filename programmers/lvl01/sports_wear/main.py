@@ -8,23 +8,18 @@
 """
 
 def solution(n, lost, reserve):
-    # 체육복 상태 초기화
-    students = [1] * (n + 1)
-    for l in lost:
-        students[l] -= 1
-    for r in reserve:
-        students[r] += 1
-
-    # 도난당한 학생이 여분의 체육복을 가지고 있는 경우 처리
-    # 체육복 대여 처리
-    for i in range(1, n + 1):
-        if students[i] == 0:
-            if i > 1 and students[i - 1] == 2:
-                students[i - 1] -= 1
-                students[i] += 1
-            elif i < n and students[i + 1] == 2:
-                students[i + 1] -= 1
-                students[i] += 1
-
-    # 체육복을 가지고 있는 학생 수 계산
-    return sum(1 for x in students[1:] if x > 0)
+    lost.sort()
+    reserve.sort()
+    for person in range(1, n + 1):
+        if person in lost and person in reserve:
+            lost.remove(person)
+            reserve.remove(person)
+    answer = n - len(lost)
+    for person in lost:
+        if person - 1 in reserve:
+            reserve.remove(person - 1)
+            answer += 1
+        elif person + 1 in reserve:
+            reserve.remove(person + 1)
+            answer += 1
+    return answer
