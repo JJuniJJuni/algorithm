@@ -1,13 +1,4 @@
-def solution(numbers, target):
-    limit = len(numbers)
-    answer = [0]
-    def dfs(curr_idx, curr_value):
-        if curr_idx == limit:
-            if curr_value == target:
-                answer[0] += 1
-            return
-        dfs(curr_idx + 1, curr_value + numbers[curr_idx])
-        dfs(curr_idx + 1, curr_value - numbers[curr_idx])
+from itertools import product
 
-    dfs(0, 0)
-    return answer[0]
+def solution(numbers, target):
+    return sum([1 for digits in product(*[(-x, x) for x in numbers]) if sum(digits) == target])
