@@ -1,25 +1,11 @@
-def add_term_to_privacy(duration, privacy_date):
+def to_days(duration, privacy_date):
     duration = int(duration)
     y, m, d = (int(element) for element in privacy_date.split("."))
-    d = d - 1 if d != 1 else 28
-    if d == 28:
-        if m != 1:
-            m = m - 1
-        else:
-            m = 12
-            y -= 1
-    divided, rest = divmod(m + duration, 12)
-    if rest == 0:
-        y += (divided - 1)
-        m = 12
-    else:
-        y += divided
-        m = rest
-    result = str(y) + "." + add_zero(m) + "." + add_zero(d)
+    result = compute_date(d, m + duration, y)
     return result
 
-def add_zero(num):
-    return "0" + str(num) if len(str(num)) == 1 else str(num)
+def compute_date(d, m, y):
+    return d + (m * 28) + (y * 12 * 28)
 
 def solution(today, terms, privacies):
     terms_map = dict()
@@ -30,9 +16,11 @@ def solution(today, terms, privacies):
     for privacy in privacies:
         privacy_date, type = privacy.split(' ')
         duration = terms_map[type]
-        added_privacies.append(add_term_to_privacy(duration, privacy_date))
+        added_privacies.append(to_days(duration, privacy_date))
     answer = []
     for idx, added_privacy in enumerate(added_privacies):
-        if added_privacy < today:
+        y, m, d = (int(element) for element in today.split("."))
+        computed_today = compute_date(d, m, y)
+        if added_privacy <= computed_today:
             answer.append(idx + 1)
     return answer
